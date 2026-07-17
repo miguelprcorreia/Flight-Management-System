@@ -2,7 +2,7 @@
 
 # ✈️ Flight Management System
 
-**Flight/airport/passenger data-analysis system built in C** — project for *Laboratórios de Informática III* @ University of Minho (2025/2026) [Grade: 19/20]
+**Flight/airport/passenger data-analysis system built in C** — project for Laboratórios de Informática III @ University of Minho (2025/2026) [Grade: 19/20]
 
 ![C](https://img.shields.io/badge/-C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
 ![Makefile](https://img.shields.io/badge/-Makefile-427819?style=for-the-badge&logo=gnu&logoColor=white)
