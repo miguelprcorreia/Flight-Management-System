@@ -803,46 +803,121 @@ void processa_interativo (GestorGlobal *gestor) {
     while (!terminou) {
         int query_escolhida = menu_queries();
         switch (query_escolhida) {
-            case 1:
+            case 1: {
                 char code[4] = {0};
+
                 solicita_code(code);
-                query1_listar_aeroporto(code,'\0',NULL,get_gestor_Aeroportos(gestor));
+                query1_listar_aeroporto(
+                    code,
+                    '\0',
+                    NULL,
+                    get_gestor_Aeroportos(gestor)
+                );
+
                 break;
-            case 2:
+            }
+
+            case 2: {
                 int topN = 0;
-                char manufacturer[64];
-                solicita_dados_query2(&topN, manufacturer,sizeof (manufacturer));
-                query2_listar_aeronaves_mais_voos(topN,(manufacturer[0] != '\0') ? manufacturer : NULL,'\0',NULL, get_gestor_Aeronaves(gestor));
+                char manufacturer[64] = {0};
+
+                solicita_dados_query2(
+                    &topN,
+                    manufacturer,
+                    sizeof(manufacturer)
+                );
+
+                query2_listar_aeronaves_mais_voos(
+                    topN,
+                    manufacturer[0] != '\0' ? manufacturer : NULL,
+                    '\0',
+                    NULL,
+                    get_gestor_Aeronaves(gestor)
+                );
+
                 break;
-            case 3:
+            }
+
+            case 3: {
                 GDate data_inicio;
                 GDate data_fim;
-                g_date_clear(&data_inicio,1);
-                g_date_clear(&data_fim,1);
 
-                solicita_dados_query3(&data_inicio,&data_fim);
-                query3_aeroporto_mais_partidas(&data_inicio,&data_fim,'\0',NULL,get_gestor_Aeroportos(gestor),get_btree_query3(get_gestor_Queries(gestor)));
+                g_date_clear(&data_inicio, 1);
+                g_date_clear(&data_fim, 1);
+
+                solicita_dados_query3(&data_inicio, &data_fim);
+
+                query3_aeroporto_mais_partidas(
+                    &data_inicio,
+                    &data_fim,
+                    '\0',
+                    NULL,
+                    get_gestor_Aeroportos(gestor),
+                    get_btree_query3(get_gestor_Queries(gestor))
+                );
+
                 break;
-            case 4:
+            }
+
+            case 4: {
                 GDate *data_inicio_1 = NULL;
                 GDate *data_fim_1 = NULL;
 
-                solicita_dados_query4(&data_inicio_1,&data_fim_1);
-                query4_passageiro_mais_vezes_top10(data_inicio_1,data_fim_1,'\0',NULL,get_gestor_Passageiros(gestor),get_hashtable_query4(get_gestor_Queries(gestor)));                
+                solicita_dados_query4(
+                    &data_inicio_1,
+                    &data_fim_1
+                );
+
+                query4_passageiro_mais_vezes_top10(
+                    data_inicio_1,
+                    data_fim_1,
+                    '\0',
+                    NULL,
+                    get_gestor_Passageiros(gestor),
+                    get_hashtable_query4(get_gestor_Queries(gestor))
+                );
+
                 break;
-            case 5:
+            }
+
+            case 5: {
                 int N = 0;
+
                 solicita_dados_query5(&N);
-                query5_listar_companhias_mais_atrasos(N,'\0',NULL,get_array_query5(get_gestor_Queries(gestor)));
+
+                query5_listar_companhias_mais_atrasos(
+                    N,
+                    '\0',
+                    NULL,
+                    get_array_query5(get_gestor_Queries(gestor))
+                );
+
                 break;
-            case 6:
-                char nationality[128];
-                solicita_dados_query6(nationality,sizeof(nationality));
-                query6_aeroporto_destino(nationality,'\0',NULL,get_hashtable_query6(get_gestor_Queries(gestor)));
+            }
+
+            case 6: {
+                char nationality[128] = {0};
+
+                solicita_dados_query6(
+                    nationality,
+                    sizeof(nationality)
+                );
+
+                query6_aeroporto_destino(
+                    nationality,
+                    '\0',
+                    NULL,
+                    get_hashtable_query6(get_gestor_Queries(gestor))
+                );
+
                 break;
-            case -1: // ESC
+            }
+
+            case -1: { // ESC
                 terminou = 1;
                 break;
+            }
+            
             default:
                 break;
         }
